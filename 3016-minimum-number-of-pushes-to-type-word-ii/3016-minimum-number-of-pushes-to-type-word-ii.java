@@ -1,24 +1,24 @@
 class Solution {
     public int minimumPushes(String word) {
-        int[] hashTable = new int[26];
+        int[] arr = new int[26];
 
         for(char ch : word.toCharArray()){
-            hashTable[ch - 'a']++;
+            arr[ch - 'a']++;
         }
 
-        int minPushing = 0;
+        int min = 0;
 
-        Arrays.sort(hashTable);
+        Arrays.sort(arr);
 
-        for(int i = 25, pushCnt = 0; i >= 0; i--){
-            int currEleIdx = 25 - i;
+        for(int i = 25, j = 0; i >= 0; i--){
+            int Idx = 25 - i;
 
-            if(currEleIdx % 8 == 0)
-                pushCnt++;
+            if(Idx % 8 == 0)
+                j++;
 
-            minPushing += hashTable[i] * pushCnt;
+            min += arr[i] * j;
         }
 
-        return minPushing;
+        return min;
     }
 }
